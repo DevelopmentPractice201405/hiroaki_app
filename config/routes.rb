@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 SampleApp::Application.routes.draw do
-=======
-FirstApp::Application.routes.draw do
->>>>>>> origin/master
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
