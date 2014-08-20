@@ -5,12 +5,20 @@ gem 'rails', '3.2.14'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+<<<<<<< HEAD
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'
   gem 'rspec-rails', '2.11.0'
 end
 
+=======
+group :development do
+  gem 'sqlite3', '1.3.5'
+end
+
+
+>>>>>>> origin/master
 # Gems used only for assets and not required
 # in production environments by default.
 
@@ -22,6 +30,7 @@ end
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
+<<<<<<< HEAD
 gem 'jquery-rails', '2.0.2'
 
 group :test do
@@ -31,6 +40,11 @@ end
 group :production do
   gem 'pg', '0.12.2'
 end
+=======
+
+gem 'jquery-rails', '2.0.2'
+
+>>>>>>> origin/master
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

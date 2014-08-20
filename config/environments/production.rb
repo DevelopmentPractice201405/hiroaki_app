@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 SampleApp::Application.configure do
+=======
+FirstApp::Application.configure do
+>>>>>>> origin/master
   # Settings specified here will take precedence over those in config/application.rb
 
   # Code is not reloaded between requests
