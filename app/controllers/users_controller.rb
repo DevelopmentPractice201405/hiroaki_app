@@ -4,6 +4,10 @@ class UsersController < ApplicationController
   before_filter :admin_user,     only: :destroy
   def show
     @user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page])
+  end
+
+  def new
   end
 
   def new
@@ -22,9 +26,11 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id]
   end
 
   def update
+    @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
       flash[:success] = "Profile updated"
       sign_in @user
@@ -60,8 +66,4 @@ class UsersController < ApplicationController
     def admin_user
       redirect_to(root_path) unless current_user.admin?
     end
-    def show
-    @user = User.find(params[:id])
-    @microposts = @user.microposts.paginate(page: params[:page])
   end
-end

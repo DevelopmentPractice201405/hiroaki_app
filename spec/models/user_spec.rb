@@ -15,13 +15,18 @@ describe User do
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:remember_token) }
+  it { should respond_to(:authenticate) }
+
+  it { should be_valid }
+  
   it { should respond_to(:admin) }
+  it { should respond_to(:authenticate) }
+  it { should be_valid }
+  it { should_not be_admin }
+
   it { should respond_to(:authenticate) }
   it { should respond_to(:microposts) }
   it { should respond_to(:feed) }
-
-  it { should be_valid }
-  it { should_not be_admin }
 
   describe "with admin attribute set to 'true'" do
     before do
@@ -33,7 +38,7 @@ describe User do
   end
 
   describe "when name is not present" do
-    before { @user.name = " " }
+    before { @user.name = "a" * 51}
     it { should_not be_valid }
   end
 
@@ -63,7 +68,7 @@ describe User do
       addresses = %w[user@foo.COM A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn]
       addresses.each do |valid_address|
         @user.email = valid_address
-        expect(@user).to be_valid
+        @user.should be_valid
       end
     end
   end
@@ -94,8 +99,8 @@ describe User do
     describe "with invalid password" do
       let(:user_for_invalid_password) { found_user.authenticate("invalid") }
 
-      it { should_not eq user_for_invalid_password }
-      specify { expect(user_for_invalid_password).to be_false }
+      it { should_not == user_for_invalid_password }
+      specify { user_for_invalid_password.should be_false }
     end
   end
 
@@ -122,7 +127,6 @@ describe User do
         Micropost.find_by_id(micropost.id).should be_nil
       end
     end
-  end
 
     it "should have the right microposts in the right order" do
       @user.microposts.should == [newer_micropost, older_micropost]
